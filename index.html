@@ -142,27 +142,77 @@
             <script>
                 arr = [89, 45, 68, 90, 29, 34, 17];
                 document.querySelector(".arrBUBBLESORT").innerHTML = `${arr.toString()}`;
-                x = 1;
-                // for loop from index 0 to The element before the last
-                while (x != arr.length) {
-                    for (let i = 0; i < (arr.length - x); i++) {
-                        if (arr[i] > arr[i + 1]) {
-                            temp = arr[i];
-                            arr[i] = arr[i + 1];
-                            arr[i + 1] = temp;
+                for (let i = 0; i < (arr.length - 1); i++) {
+                    for (let j = 0; j < (arr.length - i - 1); j++) {
+                        if (arr[j] > arr[j + 1]) {
+                            temp = arr[j];
+                            arr[j] = arr[j + 1];
+                            arr[j + 1] = temp;
                         }
-
 
                         let li = document.createElement('li');
                         li.append("" + arr.toString() + ` >> swap(${arr[i]} , ${arr[i + 1]})`);
                         document.querySelector(".stepsBUBBLESORT").append(li);
                     }
-                    x++;
                 }
             </script>
             <p>O(n^2) nested loop<br>Space efficiency :O(0) => in place sort</p>
             <a href="https://youtu.be/Dv4qLJcxus8">Good video for BUBBLE SORT</a>
 
+        </div>
+        <!-- ******************************************* -->
+        <div>
+            <h2>SEQUENTIAL SEARCH : BRUTE-FORCE</h2>
+            <h2 class="arrSEQUENTIALSEARCH"></h2>
+            <h2 class="KEYSEQUENTIALSEARCH"></h2>
+            <script>
+                arr = [10, 5, 3, 4, 8, 9, 5, 6, 2, 4, 7, 10, 15, 20, 24];
+                key = 7;
+                document.querySelector(".arrSEQUENTIALSEARCH").innerHTML = `${arr.toString()} and the key = ${key}`;
+                result = -1;
+                for (let i = 1; i < arr.length; i++) {
+                    if (arr[i] === key) {
+                        result = i;
+                        break;
+                    }
+                }
+                (result !== -1) ? document.querySelector(".KEYSEQUENTIALSEARCH").innerHTML = `the key ${key} exists at position ${result + 1}` : document.querySelector(".KEYSEQUENTIALSEARCH").innerHTML = `the key ${key} is Not exist in the array`;
+            </script>
+            <p>O(n == array size)</p>
+            <a href="https://youtu.be/oO_TY0uuv-c">Good video for SEQUENTIAL SEARCH</a>
+        </div>
+        <!-- ******************************************* -->
+        <div>
+            <h2>STRING MATCHING : BRUTE FORCE</h2>
+            <p>Problem: find a substring in the text that matches the pattern ( m less n )</p>
+            <h2 class="textSTRINGMATCHING"></h2>
+            <h2 class="patternTRINGMATCHING"></h2>
+            <h2 class="resultSTRINGMATCHING"></h2>
+            <script>
+                let text = "10010101101001100101111010";
+                let Pattern = "001011";
+                document.querySelector(".textSTRINGMATCHING").innerHTML = `the text => ${text}`;
+                document.querySelector(".patternTRINGMATCHING").innerHTML = `the pattern => ${Pattern}`;
+                temp = 0;
+                result = -1;
+                for (let i = 0; i < (text.length - Pattern.length); i++) {
+                    for (let j = 0; j < Pattern.length; j++) {
+                        if (text.charAt(i + j) === Pattern.charAt(j)) {
+                            temp++;
+                        } else {
+                            temp = 0;
+                            break;
+                        }
+                    }
+                    if (temp === Pattern.length) {
+                        result = i;
+                        break;
+                    }
+                }
+                (result != -1) ? document.querySelector(".resultSTRINGMATCHING").innerHTML = `the pattern ${Pattern} exists at possition => ${result + 1}` : document.querySelector(".resultSTRINGMATCHING").innerHTML = `the pattern ${Pattern} not exists`;
+            </script>
+            <p>O(n == array size)</p>
+            <a href="https://youtu.be/yMJLpdKV0BQ">Good video for STRING MATCHING</a>
         </div>
         <!-- ******************************************* -->
     </div>
