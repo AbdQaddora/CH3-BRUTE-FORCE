@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH3 BRUTE FORCE</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6em;
+            box-sizing: border-box;
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #CCC;
+        }
+
+        .page>div {
+            width: 70%;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            background-color: #eee;
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        ol {
+            list-style-position: inside;
+        }
+
+        @media screen and (max-width:920px) {
+            .page>div {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+        <div>
+            <h2>BRUTE FORCE ALGORITHM TO FIND THE GCD</h2>
+            <h2 class="GCD"></h2>
+            <script>
+                let x = 10;
+                let y = 5;
+
+                let min = Math.min(x, y);
+                let result = 1;
+                for (let i = min; i > 1; i--) {
+                    if (x % i === 0 && y % i === 0) {
+                        result = i;
+                        break;
+                    }
+                }
+                document.querySelector(".GCD").innerHTML = `GCD(${x} , ${y}) = ${result}`;
+            </script>
+            <p>O(n) we loop from min(x,y) to 1 for finding GCD</p>
+        </div>
+        <!-- ******************************************* -->
+        <div>
+            <h2>BRUTE FORCE ALGORITHM TO COMPUTE A^N</h2>
+            <h2 class="AN"></h2>
+            <script>
+                x = 10;
+                y = 5;
+
+                result = x;
+                for (let i = 1; i < y; i++) {
+                    result *= x;
+                }
+                document.querySelector(".AN").innerHTML = `${x}^${y} = ${result}`;
+            </script>
+            <p>x^y O(y) we loop Y time and multiple by x</p>
+
+        </div>
+        <!-- ******************************************* -->
+        <div>
+            <h2>BRUTE FORCE ALGORITHM TO FIND A KEY IN LIST</h2>
+            <h2 class="arr"></h2>
+            <h2 class="KEY"></h2>
+            <script>
+                let arr = [10, 5, 3, 4, 8, 9, 5, 6, 2, 4, 7, 10, 15, 20, 24];
+                let key = 5;
+                document.querySelector(".arr").innerHTML = `${arr.toString()} and the key = ${key}`;
+                result = false;
+                for (let i = 1; i < arr.length; i++) {
+                    if (arr[i] === key) {
+                        result = true;
+                    }
+                }
+                result ? document.querySelector(".KEY").innerHTML = `the key ${key} is exist` : document.querySelector(".KEY").innerHTML = `the key ${key} is Not exist`;
+            </script>
+            <p>O(n == array size)</p>
+
+        </div>
+        <!-- ******************************************* -->
+        <div>
+            <h2>SELECTION SORT: BRUTE-FORCE </h2>
+            <h2 class="arrSELECTIONSORT"></h2>
+            <ol class="stepsSelectionSort"></ol>
+            <script>
+                arr = [89, 45, 68, 90, 29, 34, 17];
+                document.querySelector(".arrSELECTIONSORT").innerHTML = `${arr.toString()}`;
+                // for loop from index 0 to The element before the last
+                let temp;
+                for (let i = 0; i < (arr.length - 1); i++) {
+                    min = i;
+                    for (let j = (i + 1); j < arr.length; j++) {
+                        if (arr[j] < arr[min]) {
+                            min = j;
+                        }
+                    }
+                    temp = arr[i];
+                    arr[i] = arr[min];
+                    arr[min] = temp;
+
+
+                    let li = document.createElement('li');
+                    li.append("" + arr.toString() + " >> min = " + arr[i]);
+                    document.querySelector(".stepsSelectionSort").append(li);
+                }
+            </script>
+            <p>O(n^2) nested loop<br>Space efficiency :O(0) => in place sort</p>
+            <a href="https://youtu.be/EwjnF7rFLns">Good video for selection sort</a>
+
+        </div>
+        <!-- ******************************************* -->
+        <div>
+            <h2>BUBBLE SORT : BRUTE-FORCE</h2>
+            <h2 class="arrBUBBLESORT"></h2>
+            <ol class="stepsBUBBLESORT"></ol>
+            <script>
+                arr = [89, 45, 68, 90, 29, 34, 17];
+                document.querySelector(".arrBUBBLESORT").innerHTML = `${arr.toString()}`;
+                x = 1;
+                // for loop from index 0 to The element before the last
+                while (x != arr.length) {
+                    for (let i = 0; i < (arr.length - x); i++) {
+                        if (arr[i] > arr[i + 1]) {
+                            temp = arr[i];
+                            arr[i] = arr[i + 1];
+                            arr[i + 1] = temp;
+                        }
+
+
+                        let li = document.createElement('li');
+                        li.append("" + arr.toString() + ` >> swap(${arr[i]} , ${arr[i + 1]})`);
+                        document.querySelector(".stepsBUBBLESORT").append(li);
+                    }
+                    x++;
+                }
+            </script>
+            <p>O(n^2) nested loop<br>Space efficiency :O(0) => in place sort</p>
+            <a href="https://youtu.be/Dv4qLJcxus8">Good video for BUBBLE SORT</a>
+
+        </div>
+        <!-- ******************************************* -->
+    </div>
+
+</body>
+
+</html>
